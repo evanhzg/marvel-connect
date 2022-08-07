@@ -1,6 +1,5 @@
 import logo from '../logo.svg';
 import '../HeroList.css';
-import {Route, Link, Routes, useParams} from 'react-router-dom';
 import React, { Component } from 'react';
 
 // import Hero from './Hero';
@@ -38,6 +37,8 @@ class HeroList extends React.Component {
     render() {
         const { error, isLoaded, items } = this.state;
 
+        let idCheck = false;
+
         if (error) {
             return <div>Erreur : {error.message}</div>;
         } else if (!isLoaded) {
@@ -45,15 +46,22 @@ class HeroList extends React.Component {
         } else {
             return (
                 <ul>
-                    {items.map(item => (
-                        <div key={item.id}>
-                            <p> {item.name}: { item.description } </p>
-                            <Link to={'/' + item.id}>Link to page</Link>
-                        </div>
-                    ))}
+                    {items.map(item => {
+                        while(!idCheck){
+                            if (item.id == 101133) {
+                                return (
+                                    <ul>
+                                        <h1>{item.name}</h1>
+                                        <h2>{item.description}</h2>
+                                    </ul>
+                                );
+                                idCheck = true;
+                            }
+                        }
+                    })}
                 </ul>
-            );
-        };
+            )
+        }
     }
 }
 
