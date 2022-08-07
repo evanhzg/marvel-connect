@@ -12,7 +12,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Layout />} />
                 <Route index element={<HeroList />} />
-                <Route path=":id" element={<Hero />} />
+                <Route path=":id" element={<Hero />} component={<Hero />} />
                 <Route path="*" element={<NoPage />} />
             </Routes>
         </BrowserRouter>

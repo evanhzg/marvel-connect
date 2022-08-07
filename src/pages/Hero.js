@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 
 // import Hero from './Hero';
 
-class HeroList extends React.Component {
+class Hero extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props)
         this.state = {
             error: null,
             isLoaded: false,
@@ -36,6 +37,8 @@ class HeroList extends React.Component {
 
     render() {
         const { error, isLoaded, items } = this.state;
+        const id = this.props.match.params.id;
+        console.log(id);
 
         let idCheck = false;
 
@@ -48,7 +51,7 @@ class HeroList extends React.Component {
                 <ul>
                     {items.map(item => {
                         while(!idCheck){
-                            if (item.id == 101133) {
+                            if (item.id === 12) {
                                 return (
                                     <ul>
                                         <h1>{item.name}</h1>
@@ -65,4 +68,4 @@ class HeroList extends React.Component {
     }
 }
 
-export default HeroList;
+export default Hero;
